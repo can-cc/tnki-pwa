@@ -1,4 +1,4 @@
-# tnki-pwa
+# tnki-pwa ![Node.js CI](https://github.com/fwchen/tnki-pwa/workflows/Node.js%20CI/badge.svg)
 
 ## Project setup
 ```
