@@ -55,7 +55,7 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=fwchen/tnki
+          IMAGE_ID=${{ secrets.docker_hub_username }}/tnki-pwa
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
