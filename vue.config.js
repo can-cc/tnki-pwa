@@ -1,6 +1,7 @@
 module.exports = {
   pwa: {
-    name: "Tnki"
+    name: "Tnki",
+    workboxOptions: { skipWaiting: true }
   },
   devServer: {
     proxy: {
