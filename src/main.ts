@@ -1,6 +1,5 @@
 import Vue from "vue";
 import App from "./App.vue";
-import "./registerServiceWorker";
 import router from "./router";
 import {
   Form,
@@ -14,7 +13,10 @@ import {
   NavBar
 } from "vant";
 
+import "./registerServiceWorker";
+
 import "vant/lib/index.css";
+import { setupAxiosAuth } from "./util/auth";
 
 Vue.config.productionTip = false;
 Vue.config.silent = true;
@@ -33,3 +35,5 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount("#app");
+
+setupAxiosAuth();
