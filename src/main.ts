@@ -16,7 +16,7 @@ import {
 import "./registerServiceWorker";
 
 import "vant/lib/index.css";
-import { setupAxiosAuth } from "./util/auth";
+import { setupAxiosInterceptor, receiveJwtToken } from "./util/auth";
 
 Vue.config.productionTip = false;
 Vue.config.silent = true;
@@ -36,4 +36,4 @@ new Vue({
   render: h => h(App)
 }).$mount("#app");
 
-setupAxiosAuth();
+setupAxiosInterceptor(receiveJwtToken());

@@ -37,6 +37,7 @@ import axios from "axios";
 import router from "@/router";
 import { Toast } from "vant";
 import Logo from "@/components/Logo";
+import { saveJwtToken, setupAxiosInterceptor } from "../util/auth";
 
 export default {
   name: "Login",
@@ -52,15 +53,18 @@ export default {
   methods: {
     onSubmit(values) {
       axios
-        .post("/api/signin", values)
-        .then(() => {
+        .post("/api/login", values)
+        .then(response => {
+          const jwtToken = response.headers["x-app-auth-token"];
+          saveJwtToken(jwtToken);
+          setupAxiosInterceptor(jwtToken);
           router.push("/dashboard");
         })
         .catch(error => {
-          if (error.response && error.response.status === 400) {
+          if (error.response && error.response.status === 403) {
             Toast.fail("密码错误，请检查用户名和密码");
           } else {
-            Toast.fail.error("登陆失败");
+            Toast.fail("登陆失败");
           }
         });
     }
